@@ -67,7 +67,7 @@ public class CalendarProviderAccessor extends AbstractCalendarAccessor {
   @Override
   protected Cursor queryEvents(String[] projection, String selection,
                                String[] selectionArgs, String sortOrder) {
-    return this.cordova.getgetContext().getApplicationContextActivity().getContentResolver().query(
+    return this.cordova.getContext().getApplicationContextActivity().getContentResolver().query(
             Events.CONTENT_URI, projection, selection, selectionArgs, sortOrder);
   }
 
