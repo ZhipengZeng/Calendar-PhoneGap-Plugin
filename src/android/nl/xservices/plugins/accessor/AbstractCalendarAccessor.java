@@ -505,7 +505,7 @@ public abstract class AbstractCalendarAccessor {
     }
 
     public boolean deleteEvent(Uri eventsUri, long startFrom, long startTo, String title, String location, String notes) {
-        ContentResolver resolver = this.cordova.getActivity().getApplicationContext().getContentResolver();
+        ContentResolver resolver = this.cordova.getContext().getApplicationContext().getContentResolver();
         Event[] events = fetchEventInstances(null, title, location, notes, startFrom, startTo);
         int nrDeletedRecords = 0;
         if (events != null) {
@@ -540,8 +540,8 @@ public abstract class AbstractCalendarAccessor {
 
         // If targeted, delete initial event
         if (fromTime == -1 || evDtStart >= fromTime) {
-            ContentResolver resolver = this.cordova.getActivity().getContentResolver();
-            int deleted = this.cordova.getActivity().getContentResolver()
+            ContentResolver resolver = this.cordova.getContext().getApplicationContext().getContentResolver();
+            int deleted = this.cordova.getContext().getApplicationContext().getContentResolver()
                               .delete(ContentUris.withAppendedId(eventsUri, id), null, null);
             return deleted > 0;
         }
@@ -586,7 +586,7 @@ public abstract class AbstractCalendarAccessor {
         // Update event
         ContentValues values = new ContentValues();
         values.put(Events.RRULE, evRRule);
-        int updated = this.cordova.getActivity().getContentResolver()
+        int updated = this.cordova.getContext().getApplicationContext().getContentResolver()
                           .update(ContentUris.withAppendedId(eventsUri, id), values, null, null);
 
         return updated > 0;
@@ -598,7 +598,7 @@ public abstract class AbstractCalendarAccessor {
                               String recurrenceByDay, String recurrenceByMonthDay, Long recurrenceEndTime, Long recurrenceCount,
                               String allday,
                               Integer calendarId, String url) {
-        ContentResolver cr = this.cordova.getActivity().getContentResolver();
+        ContentResolver cr = this.cordova.getContext().getApplicationContext().getContentResolver();
         ContentValues values = new ContentValues();
         final boolean allDayEvent = "true".equals(allday) && isAllDayEvent(new Date(startTime), new Date(endTime));
         if (allDayEvent) {
@@ -669,7 +669,7 @@ public abstract class AbstractCalendarAccessor {
         try {
             // don't create if it already exists
             Uri evuri = CalendarContract.Calendars.CONTENT_URI;
-            final ContentResolver contentResolver = cordova.getActivity().getContentResolver();
+            final ContentResolver contentResolver = cordova.getContext().getApplicationContext().getContentResolver();
             Cursor result = contentResolver.query(evuri, new String[]{CalendarContract.Calendars._ID, CalendarContract.Calendars.NAME, CalendarContract.Calendars.CALENDAR_DISPLAY_NAME}, null, null, null);
             if (result != null) {
                 while (result.moveToNext()) {
@@ -718,7 +718,7 @@ public abstract class AbstractCalendarAccessor {
     public void deleteCalendar(String calendarName) {
         try {
             Uri evuri = CalendarContract.Calendars.CONTENT_URI;
-            final ContentResolver contentResolver = cordova.getActivity().getContentResolver();
+            final ContentResolver contentResolver = cordova.getContext().getApplicationContext().getContentResolver();
             Cursor result = contentResolver.query(evuri, new String[]{CalendarContract.Calendars._ID, CalendarContract.Calendars.NAME, CalendarContract.Calendars.CALENDAR_DISPLAY_NAME}, null, null, null);
             if (result != null) {
                 while (result.moveToNext()) {

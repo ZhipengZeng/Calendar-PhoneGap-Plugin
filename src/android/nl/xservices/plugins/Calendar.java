@@ -620,7 +620,7 @@ public class Calendar extends CordovaPlugin {
       cordova.getThreadPool().execute(new Runnable() {
         @Override
         public void run() {
-          ContentResolver contentResolver = Calendar.this.cordova.getActivity().getContentResolver();
+          ContentResolver contentResolver = Calendar.this.cordova.getContext().getApplicationContext().getContentResolver();
 
           JSONArray result = new JSONArray();
           long input_start_date = jsonFilter.optLong("startTime");

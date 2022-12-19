@@ -51,7 +51,7 @@ public class CalendarProviderAccessor extends AbstractCalendarAccessor {
   @Override
   protected Cursor queryAttendees(String[] projection, String selection,
                                   String[] selectionArgs, String sortOrder) {
-    return this.cordova.getActivity().getContentResolver().query(
+    return this.cordova.getContext().getApplicationContext().getContentResolver().query(
             Attendees.CONTENT_URI, projection, selection, selectionArgs,
             sortOrder);
   }
@@ -59,7 +59,7 @@ public class CalendarProviderAccessor extends AbstractCalendarAccessor {
   @Override
   protected Cursor queryCalendars(String[] projection, String selection,
                                   String[] selectionArgs, String sortOrder) {
-    return this.cordova.getActivity().getContentResolver().query(
+    return this.cordova.getContext().getApplicationContext().getContentResolver().query(
             Calendars.CONTENT_URI, projection, selection, selectionArgs,
             sortOrder);
   }
@@ -67,7 +67,7 @@ public class CalendarProviderAccessor extends AbstractCalendarAccessor {
   @Override
   protected Cursor queryEvents(String[] projection, String selection,
                                String[] selectionArgs, String sortOrder) {
-    return this.cordova.getActivity().getContentResolver().query(
+    return this.cordova.getgetContext().getApplicationContextActivity().getContentResolver().query(
             Events.CONTENT_URI, projection, selection, selectionArgs, sortOrder);
   }
 
@@ -78,7 +78,7 @@ public class CalendarProviderAccessor extends AbstractCalendarAccessor {
     Uri.Builder builder = Instances.CONTENT_URI.buildUpon();
     ContentUris.appendId(builder, startFrom);
     ContentUris.appendId(builder, startTo);
-    return this.cordova.getActivity().getContentResolver().query(
+    return this.cordova.getContext().getApplicationContext().getContentResolver().query(
             builder.build(), projection, selection, selectionArgs, sortOrder);
   }
 

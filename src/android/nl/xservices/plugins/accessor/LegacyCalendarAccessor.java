@@ -55,7 +55,7 @@ public class LegacyCalendarAccessor extends AbstractCalendarAccessor {
   protected Cursor queryAttendees(String[] projection, String selection,
                                   String[] selectionArgs, String sortOrder) {
     String uri = getContentProviderUri(CONTENT_PROVIDER_PATH_ATTENDEES);
-    return this.cordova.getActivity().managedQuery(Uri.parse(uri), projection,
+    return this.cordova.getContext().getApplicationContext().getContentResolver().query(Uri.parse(uri), projection,
             selection, selectionArgs, sortOrder);
   }
 
@@ -63,7 +63,7 @@ public class LegacyCalendarAccessor extends AbstractCalendarAccessor {
   protected Cursor queryCalendars(String[] projection, String selection,
                                   String[] selectionArgs, String sortOrder) {
     String uri = getContentProviderUri(CONTENT_PROVIDER_PATH_CALENDARS);
-    return this.cordova.getActivity().managedQuery(Uri.parse(uri), projection,
+    return this.cordova.getContext().getApplicationContext().getContentResolver().query(Uri.parse(uri), projection,
             selection, selectionArgs, sortOrder);
   }
 
@@ -71,7 +71,7 @@ public class LegacyCalendarAccessor extends AbstractCalendarAccessor {
   protected Cursor queryEvents(String[] projection, String selection,
                                String[] selectionArgs, String sortOrder) {
     String uri = getContentProviderUri(CONTENT_PROVIDER_PATH_EVENTS);
-    return this.cordova.getActivity().managedQuery(Uri.parse(uri), projection,
+    return this.cordova.getContext().getApplicationContext().getContentResolver().query(Uri.parse(uri), projection,
             selection, selectionArgs, sortOrder);
   }
 
@@ -81,7 +81,7 @@ public class LegacyCalendarAccessor extends AbstractCalendarAccessor {
                                        String sortOrder) {
     String uri = getContentProviderUri(CONTENT_PROVIDER_PATH_INSTANCES_WHEN) +
             "/" + Long.toString(startFrom) + "/" + Long.toString(startTo);
-    return this.cordova.getActivity().managedQuery(Uri.parse(uri), projection,
+    return this.cordova.getContext().getApplicationContext().getContentResolver().query(Uri.parse(uri), projection,
             selection, selectionArgs, sortOrder);
   }
 
