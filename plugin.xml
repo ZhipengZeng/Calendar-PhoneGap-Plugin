@@ -8,18 +8,18 @@
   <name>Calendar</name>
 
   <description>
-    This plugin allows you to manipulate the native calendar.
+    This plugin allows you to manipulate the native calendar, forked from Eddy Verbruggen.
   </description>
 
-  <author>Eddy Verbruggen</author>
+  <author>Eddy Verbruggen, Zhipeng Zeng</author>
 
   <license>MIT</license>
 
   <keywords>Calendar, Agenda, Event</keywords>
 
-  <repo>https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin.git</repo>
+  <repo>https://github.com/ZhipengZeng/Calendar-PhoneGap-Plugin.git</repo>
 
-  <issue>https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin/issues</issue>
+  <issue>https://github.com/ZhipengZeng/Calendar-PhoneGap-Plugin/issues</issue>
 
   <engines>
       <engine name="cordova-android" version=">=6.3.0" />
